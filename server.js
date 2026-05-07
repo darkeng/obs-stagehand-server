@@ -16,7 +16,7 @@ mongoose.connection.on('error', err => console.error('Mongo error:', err));
 mongoose.connection.on('disconnected', () => console.warn('Mongo disconnected'));
 
 const io = new Server(server, {
-  cors: { origin: '*', methods: ['GET', 'POST'] }
+  cors: { origin: config.corsOrigins, methods: ['GET', 'POST'], credentials: true }
 });
 registerSockets(io);
 

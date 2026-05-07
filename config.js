@@ -14,6 +14,13 @@ module.exports = {
   mongoUri: process.env.MONGODB_URI,
   jwtSecret: process.env.JWT_SECRET,
 
+  // Comma-separated allow-list. Defaults work for the production deployment;
+  // override via CORS_ORIGINS for staging or extra clients.
+  corsOrigins: (process.env.CORS_ORIGINS || 'https://stagehand.darkeng.dev')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean),
+
   // Token TTLs. Users renew on every login; guests get a year because they
   // can't recover their identity if the token expires.
   userTokenTtl: '24h',
