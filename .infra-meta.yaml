@@ -1,0 +1,9 @@
+# Contrato verificable. Lo regenera `infra scaffold-app`.
+stack: node-backend-express
+role: backend
+container:
+  port: 3000
+  healthcheck:
+    path: /health
+do_infra_repo: darkeng/do-infra
+managed_by: do-infra
